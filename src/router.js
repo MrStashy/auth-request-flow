@@ -14,7 +14,9 @@ const mockUser = {
 };
 
 router.post('/login', (req, res) => {
-
+    const payload = { username: mockUser.username }
+    const token = jwt.sign(payload, process.env.JWT_SECRET)
+    res.status(200).json(token)
 });
 
 router.get('/profile', (req, res) => {
